@@ -82,24 +82,62 @@ public class BaseTest extends Locators
         logHB.info("Mobile phone selected.");
 
         expWait.until(ExpectedConditions.urlToBe(urlTobePhone));                                                        //Like phone
-        js.executeScript("window.scrollTo(0, 1500)");
+        js.executeScript("window.scrollTo(0, 1000)");
         hbDriver.findElement(By.xpath(likeMobile)).click();
         logHB.info("Phone liked.");
-        Thread.sleep(1000);
+
+        /*expWait.until(ExpectedConditions.alertIsPresent());
         String alT = hbDriver.switchTo().alert().getText();
         Assert.assertEquals("Ürün listenize eklendi.",alT);
-        //expWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(likePop)));
+        expWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(likePop)));
         logHB.info("Pop up successfully visible.");
+        */
 
-        js.executeScript("window.scrollTo(0, 0)");
+        Thread.sleep(1000);
+        /*
+        js.executeScript("window.scrollTo(0, 0)");                                                                      //Scroll top
+        Thread.sleep(1000);
+        actHB.moveToElement(hbDriver.findElement(By.xpath(mouseHover))).build().perform();                                 //Mouse hover
+        expWait.until(ExpectedConditions.visibilityOfElementLocated(By.className(openMenu)));
+        crsMove = hbDriver.findElement(By.xpath(mouseHover));
+        actHB.moveToElement(hbDriver.findElement(By.xpath(myLikes))).click().build().perform();                            //Click 'Beğendiklerim'
+        //Assert.assertEquals(hbDriver.getCurrentUrl().contains("1"), hbDriver.getCurrentUrl());                           //Phone check. If this test passed, selected phone is same.
+        expWait.until(ExpectedConditions.urlToBe("https://listelerim.hepsiburada.com/begendiklerim"));
+        */
 
+        //The site have a bug.
+        //Even if you like the phone it's not visible for 'beğendiklerim page'
+        //Under this I tried to solve this bug, but I can't.
+        //When you delete liked phone from 'beğendiklerim page' It's not delete from phone's page. Still remain 'liked'.
+        //I'll make comment line the code blocks and jump to 'Sepetim'
 
+        /*
+        js.executeScript("window.history.go(-1)");
+        expWait.until(ExpectedConditions.urlToBe("https://www.hepsiburada.com/samsung-galaxy-a72-128-gb-samsung-turkiye-garantili-p-HBCV0000032V35"));
+        js.executeScript("window.history.go(1)");
+        expWait.until(ExpectedConditions.urlToBe("https://listelerim.hepsiburada.com/begendiklerim/1"));
+        js.executeScript("window.scrollTo(0,900)");
+        actHB.moveToElement(hbDriver.findElement(By.xpath(addCart))).build().perform();                                 //Mouse hover
+        expWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(addCart)));
+        crsMove = hbDriver.findElement(By.xpath(addCart));
+        actHB.moveToElement(hbDriver.findElement(By.xpath(addBTN))).click().build().perform();
+        */
 
-
-
-
-
-
-
+        hbDriver.findElement(By.id(addPhonepageToCart)).click();
+        expWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(goCart)));
+        hbDriver.findElement(By.xpath(goCart)).click();
+        expWait.until(ExpectedConditions.urlToBe(cartUrl));
+        Thread.sleep(2000);
+        actHB.moveToElement(hbDriver.findElement(By.xpath(cartHover))).build().perform();                               //Delete phone
+        //expWait.until(ExpectedConditions.visibilityOfElementLocated(By.className(cartHover)));
+        crsMove = hbDriver.findElement(By.xpath(cartHover));
+        actHB.moveToElement(hbDriver.findElement(By.xpath(delPhone))).click().build().perform();
+        hbDriver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[2]/section/section/ul/li/div/div/div[3]/div/div/h1/a")).click();
+        //hbDriver.findElement(By.className(delDel)).click();
+        hbDriver.findElement(By.xpath(delPhone)).click();
+        logHB.info("Phone deleted.");
+        Thread.sleep(1000);
+        Assert.assertEquals("Sepetin şu an boş",hbDriver.findElement(By.xpath(emptyCart)).getText());
+        logHB.info("Cart is empty.");
     }
 }

@@ -17,5 +17,15 @@ public class Locators
     protected String urlTobePhone = "https://www.hepsiburada.com/samsung-galaxy-a72-128-gb-samsung-turkiye-garantili-p-HBCV0000032V35";
     protected String likeMobile = "//div[contains(text(),'Beğen')]";
     protected String likePop = "/html/body/div[11]/div[1]/div/div[2]/div[1]";
+    protected String myLikes = "//*[@id=\"myAccount\"]/div/div[2]/ul/li[5]/a";
+    protected String addCart = "//*[@id=\"root\"]/div/div/div[3]/div[2]/div[2]/div[2]/div[2]/div/ul/div/div";
+    protected String addBTN = "//div[contains(text(),'Sepete ekle')]";
+    protected String addPhonepageToCart = "addToCart";
+    protected String goCart = "//button[contains(text(),'Sepete git')]";
+    protected String cartHover = "//a[contains(text(),'Samsung Galaxy A72 128 GB (Samsung Türkiye Garanti')]";
+    protected String delPhone = "//body/div[@id='app']/div[1]/div[1]/div[2]/div[1]/div[2]/section[1]/section[1]/ul[1]/li[1]/div[1]/div[1]/div[2]/div[1]/a[1]/div[1]/*[1]";
+    protected String emptyCart = "//*[@id=\"app\"]/div/div/div[2]/div/div[2]/div[1]/div[2]/div[2]/h1";
+    protected String cartUrl = "https://checkout.hepsiburada.com/";
+    protected String delDel = "sc-AxjAm cxvjoB sflButton_2fKbY";
 
 }
