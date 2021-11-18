@@ -46,9 +46,9 @@ public class BaseTest extends Locators
         actHB.moveToElement(hbDriver.findElement(By.xpath(login))).click().build().perform();                              //Click 'Giriş Yap'
 
         expWait.until(ExpectedConditions.visibilityOfElementLocated(By.id(mailTbox)));                                     //Login
-        hbDriver.findElement(By.id(mailTbox)).sendKeys("y.ozdemir71@gmail.com");
+        hbDriver.findElement(By.id(mailTbox)).sendKeys("@gmail.com");
         expWait.until(ExpectedConditions.visibilityOfElementLocated(By.id(passTbox)));
-        hbDriver.findElement(By.id(passTbox)).sendKeys("123Test321");
+        hbDriver.findElement(By.id(passTbox)).sendKeys("");
         hbDriver.findElement(By.id(loginBTN)).click();
         logHB.info("Successfully login.");
 
